@@ -20,24 +20,21 @@ function change_notation(moves, move_gen, img_gen, notation_equiv_class, config)
 }
 
 function mega2carrot(moves) {
+	moves = moves.join(" ").split("\n").join(" ").split(" ");
 	var out = [];
 	for (var i = 0; i < moves.length; ++i) {
-		if (moves[0] == "R") {
+		if (moves[i][0] == "R") {
 			out.push(moves[i][1] + moves[i + 1][1]);
 			++i;
+		} else if(moves[i][0] == "U"){
+			out.push(moves[i]+"\n");
 		}
 	}
 	return out;
 }
 
 function mega2nolinebr(moves) {
-	var out = [];
-	for (var i = 0; i < moves.length; ++i) {
-		if (moves[0] != "\n") {
-			out.push(moves[i][1]);
-		}
-	}
-	return out;
+	return moves.join(" ").split("\n").join(" ").split(" ");
 }
 
 function mega2oldstyle(moves){

@@ -19,21 +19,20 @@ var random_move_nnn = (function() {
         var side, fn, magnitude, suffix, moves=[], prevside = "", prevused = [], doubleprevside = "_";
         while(moves.length < length){
             side = rndEl(["R","U","F","D","B","L"]);
-            fn = side < 3 ? Math.ceil: Math.floor;
-            magnitude = rn(fn(n/2-0.5))+1;
+            if(n%2==1) magnitude=rn(n/2-0.5)+1;
+            else if(side =="R" || side == "F" || side == "U") magnitude = rn(n/2)+1;
+            else magnitude = rn(n/2-1)+1;
             suffix = rndEl(["","2","'"]);
             if(prevside != side){
                 if(!(prevside == {"R":"L","L":"R","U":"D","D":"U","F":"B","B":"F"}[side] && doubleprevside == side)){
                     doubleprevside = prevside;
                     prevside = side;
                     prevused = [magnitude];
-                    moves.push((magnitude==1?"":magnitude) + side + suffix);
+                    moves.push((magnitude<3?"":magnitude) + side + (magnitude==1?"":"w") + suffix);
                 }
-            } else {
-                if(prevused.indexOf(magnitude) == -1){
-                    prevused.push(magnitude);
-                    moves.push((magnitude==1?"":magnitude) + side + suffix);
-                }
+            } else if(prevused.indexOf(magnitude) == -1){
+                prevused.push(magnitude);
+                moves.push((magnitude<3?"":magnitude) + side + (magnitude==1?"":"w") + suffix);
             }
         }
         return moves;

@@ -145,18 +145,18 @@ var nnn_representation = (function() {
 		ctx.clearRect(0, 0, width, height);
 		ctx.font = "12px Arial";
 		ctx.strokeStyle = config.baseColor;
+		ctx.lineWidth=1;
 
 		var unit_size = Math.min(width / 4, height / 3) - 5;
-		var cubie_size = unit_size / n;
-		unit_size += 5;
+		var cubie_size = Math.floor(unit_size / n);
 		var piece_size_x, piece_size_y;
 
 		var orstate = JSON.parse(JSON.stringify(grstate));
 		grstate = moves(grstate, apply_alg("U R2 F B R B2 R U2 L B2 R U' D' R2 F R' L B2 U2 F2".split(" ")), 3);
 
 		for (var i = 0; i < 6; ++i){
-			var heightoffset = [1, 0, 1, 2, 1, 1][i] * unit_size;
-			var widthoffset = [2, 1, 1, 1, 3, 0][i] * unit_size;
+			var heightoffset = [1, 0, 1, 2, 1, 1][i] * (cubie_size * n + 5) + 1;
+			var widthoffset = [2, 1, 1, 1, 3, 0][i] * (cubie_size * n + 5) + 1;
 			for (var x = 0; x < n; ++x) {
 				for (var y = 0; y < n; ++y){
 					ctx.fillStyle = config.colorScheme[Math.floor(orstate[i][x][y] / n / n)];
@@ -165,6 +165,8 @@ var nnn_representation = (function() {
 						piece_size_y = [6,2,4,7,5,3][Math.floor(gssy(grstate,i,x,y) / n / n)]/7*cubie_size;
 					}
 					else piece_size_x = piece_size_y = [6,2,4,7,5,3][Math.floor(grstate[i][x][y] / n / n)]/7*cubie_size;
+					piece_size_x = Math.round(piece_size_x);
+					piece_size_y = Math.round(piece_size_y);
 					if(x==0) var xoffset = cubie_size - piece_size_x; else xoffset = 0;
 					if(y==0) var yoffset = cubie_size - piece_size_y; else yoffset = 0;
 					if(x==n-1) var x2offset = cubie_size - piece_size_x; else x2offset = 0;
@@ -198,10 +200,10 @@ var nnn_representation = (function() {
 	function apply_alg(moves){
 		var mvs = [];
 		for(var i=0;i<moves.length;++i){
-			var face = moves[i].replace(/[0-9w]/g, "");
 			var isW = moves[i].indexOf("w")>-1;
+			var face = moves[i].replace(/[0-9w]/g, "");
 			moves[i] = moves[i].toUpperCase();
-			moves[i] = moves[i].split("w").join("");
+			moves[i] = moves[i].split("W").join("");
 			moves[i] = moves[i].replace(/[RUFDBL]/i,"#").split("#");
 			if(moves[i][0]=="") moves[i][0]=isW?2:1;
 			var mgn = moves[i][1]==""?1:(moves[i][1]=="'"?3:(moves[i][1]=="2"?2:0));
