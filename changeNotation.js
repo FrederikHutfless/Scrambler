@@ -80,7 +80,7 @@ function NNN2yo(moves){
 			"L2":"I",
 			"R":"J",
 			"R'":"K",
-			"R":"L",
+			"R2":"L",
 			"M":"M",
 			"M'":"N",
 			"M2":"O",

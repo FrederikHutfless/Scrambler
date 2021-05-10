@@ -66,6 +66,7 @@ function genOther(config) {
 		case "MegaRU": return scramble(["R","U"],["","2","2'","'"],35,{}); break;
 		case "Heli": return scramble(["UL","UR","UF","UB","DL","DR","DF","DB","FR","FL","BR","BL"],[""],30,{}); break;
 		case "sq2": return square2(30); break;
+		case "rainbow": return scramble(["R","U","F","D","B","L","P","Q"],["","'"],30,{}); break; //The scramble function currently does not work with so many independent faces, so this is just for testing
 		default: return ["unknown code"];
 	}
 }
@@ -106,7 +107,7 @@ function genOtherImage(imoves, img_gen, config){
 			break;
 		case "pyr0tips": case "pyr4tips":
 			return drawWCA("test", "pyram", imoves, config);
-        case "1x1x2R": case "1x1x2U": case "1x2x2rs": case "1x2x3rs": case "1x1x1": case "-cs-1x-1x-1": case "1x1x1optrs":
+        case "1x1x2R": case "1x1x2U": case "1x2x2rs": case "1x2x3rs": case "1x1x1": case "-cs-1x-1x-1": case "1x1x1optrs": case "sq2": case "rainbow": case "Heli": case "MegaRU": //Rainbow and MegaRU will get images later
             return;
 	}
     return nnn_representation.draw("test",nnn_representation.moves(nnn_representation.init_cube(n),nnn_representation.apply_alg(imoves),n),n,config);
