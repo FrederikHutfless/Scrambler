@@ -60,6 +60,8 @@
 			return addColor_(orig_moves, mod_moves, config);
 		if (move_gen == "wca" && config.type == "clock")
 			return addClockColor_(orig_moves, mod_moves, 1, config);
+		if (move_gen == "wca" && config.type == "minx" && (config.notationStyle == 0 || config.notationStyle == 1))
+			return addMegaminxColor_(orig_moves, mod_moves, config);
 		return JSON.parse(JSON.stringify(mod_moves));
 	}
 
@@ -70,4 +72,4 @@
 		change_notation: change_notation,
 		changeColor: changeColor
 	}
-	})();
+})();
