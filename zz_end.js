@@ -7,6 +7,9 @@
 			case "NNN_moves":
 				return random_move_nnn.genMoves(config);
 			case "subset":
+        		scramble_subset.setRandomSource(Math);
+        		scramble_subset.initialize();
+        		scramble_subset.setRandomSource(Math);
 				var s = scramble_subset["get" + config.type + "Scramble"]().split("  ").join(" ").split(" ");
 				if (s[s.length - 1] == "") s.pop();
 				return s;
