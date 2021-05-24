@@ -31,11 +31,27 @@ function square2(len){
 function state122(){
 	return rndEl(["R2","R2 U2", "R2 U2 R2", "U2 R2", "U2"]).split(" ");
 }
-function state123(){
+function state123RU(){
 	return rndEl(["R2","R2 U2", "R2 U2 R2", "U2 R2", "U2", "U2 R2 U2 R2 U2", "U2 R2 U2 R2", "U2 R2 U2", "R2 U2 R2 U2", "R2 U2 R2 U2 R2", "R2 U2 R2 U2 R2"]).split(" ");
 }
 function state111(){
     return rndEl(["y","y2","y'","x","x2","x'","z","z'","z y","z y2","z y''","z' y","z' y2","z' y'","z2 y","z2 y2","z2 y'","x y","x y2","x y'","x' y","x' y2","x' y'"]).split(" ");
+}
+function r123(){
+	var scr = [];
+	var dir = Math.random()<.5? 0 : 1;
+	for(var i=0;i<10;++i){
+		if(i%2 == dir) scr.push("R2");
+		else{
+			if(Math.random() <.5){
+				scr.push("U2");
+				if(Math.random() <.5) scr.push("D2");
+			} else {
+				 scr.push("D2");
+			}
+		}
+	}
+	return scr;
 }
 
 function genOther(config) {
@@ -46,7 +62,8 @@ function genOther(config) {
 		case "1x1x2R": return scrambleDumb(["R","R2","R'"],10); break;
 		case "1x1x2U": return scrambleDumb(["U","U2","U'"],10); break;
 		case "1x2x2rs": return state122(); break;
-		case "1x2x3rs": return state123(); break;
+		case "1x2x3rsru": return state123RU(); break;
+		case "1x2x3": case "1x2x3rs": return r123(); break;
 		case "csLOL": return [rndEl(["LOLOLOLOLOLOLOLOLOLOLOLOL","OLOLOLOLOLOLOLOLOLOLOLOLO"])]; break;
 		case "2RU": return scramble(["R","U"],["","2","'"],15,{}); break;
 		case "3RU": return scramble(["R","U"],["","2","'"],25,{}); break;

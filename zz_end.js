@@ -48,6 +48,8 @@
 			case "cuboid":
 				return;
 			case "other":
+				if(config.type == "1x2x3" || config.type == "1x2x3rsru" || config.type == "1x2x3rs")
+					return c123.draw("test", c123.moves(c123.init_cube(config.n), c123.apply_alg(imoves), config.n), config.n, config);
 				return genOtherImage(imoves, img_gen, config);
 		}
 	}
