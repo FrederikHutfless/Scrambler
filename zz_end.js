@@ -61,7 +61,7 @@
 	function changeColor(orig_moves, mod_moves, move_gen, img_gen, notation_equiv_class, config) {
 		if (move_gen == "NNN_moves")
 			return addColor_(orig_moves, mod_moves, config);
-		if (move_gen == "wca" && [222, 333, 444, "444fast", 555, 666, 777].indexOf(config.type) > -1)
+		if (move_gen == "wca" && [222, 333, 444, "444fast", 555, 666, 777, "333ni", "444ni", "555ni", "333fm"].indexOf(config.type) > -1)
 			return addColor_(orig_moves, mod_moves, config);
 		if (move_gen == "wca" && config.type == "clock")
 			return addClockColor_(orig_moves, mod_moves, 1, config);

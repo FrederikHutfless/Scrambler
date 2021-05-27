@@ -35,12 +35,12 @@ var c123 = (function() {
 	function draw_cubie(ctx, x, y, color, width, height, config) {
 		var unit_size = Math.min(width / 3, height / 5) - 5;
 		var cubie_size = unit_size;
-		unit_size += 5;
+		var offset = 5;
 
 		ctx.fillStyle = color;
-		ctx.fillRect(y * cubie_size, x * cubie_size, cubie_size, cubie_size);
+		ctx.fillRect(offset + y * cubie_size, offset + x * cubie_size, cubie_size, cubie_size);
 		if(config.baseColor != "stickerless"){
-			ctx.strokeRect(y * cubie_size, x * cubie_size, cubie_size, cubie_size);
+			ctx.strokeRect(offset + y * cubie_size, offset + x * cubie_size, cubie_size, cubie_size);
 		}
 	}
 
