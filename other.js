@@ -40,7 +40,7 @@ function state111(){
 function r123(){
 	var scr = [];
 	var dir = Math.random()<.5? 0 : 1;
-	for(var i=0;i<10;++i){
+	for(var i=0;i<9+Math.random()*2;++i){
 		if(i%2 == dir) scr.push("R2");
 		else{
 			if(Math.random() <.5){
