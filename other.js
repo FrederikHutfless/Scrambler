@@ -53,6 +53,14 @@ function r123(){
 	}
 	return scr;
 }
+function megaLSLL(){
+    var sol = "";
+    for(var i=0;i<12;++i){
+        sol += " "+rndEl(["R U R'","R U' R'","R U2 R'","R U2' R'","F' U' F","F' U F","F' U2 F","F' U2' F","R U2' R'","R' F R F'"]);
+        sol += " "+rndEl(["U","U2","U2'","U'"]);
+    }
+    return sol.split(" ");
+}
 
 function genOther(config) {
 	switch(config.type){
@@ -64,6 +72,7 @@ function genOther(config) {
 		case "1x2x2rs": return state122(); break;
 		case "1x2x3rsru": return state123RU(); break;
 		case "1x2x3": case "1x2x3rs": return r123(); break;
+        case "megaLSLL": return megaLSLL(); break;
 		case "csLOL": return [rndEl(["LOLOLOLOLOLOLOLOLOLOLOLOL","OLOLOLOLOLOLOLOLOLOLOLOLO"])]; break;
 		case "2RU": return scramble(["R","U"],["","2","'"],15,{}); break;
 		case "3RU": return scramble(["R","U"],["","2","'"],25,{}); break;
@@ -124,7 +133,7 @@ function genOtherImage(imoves, img_gen, config){
 			break;
 		case "pyr0tips": case "pyr4tips":
 			return drawWCA("test", "pyram", imoves, config);
-        case "1x1x2R": case "1x1x2U": case "1x2x2rs": case "1x2x3rs": case "1x1x1": case "-cs-1x-1x-1": case "1x1x1optrs": case "sq2": case "rainbow": case "Heli": case "MegaRU": //Rainbow and MegaRU will get images later
+        case "1x1x2R": case "1x1x2U": case "1x2x2rs": case "1x2x3rs": case "1x1x1": case "-cs-1x-1x-1": case "1x1x1optrs": case "sq2": case "rainbow": case "Heli": case "MegaRU": case "megaLSLL": //Rainbow and MegaRU will get images later
             return;
 	}
     return nnn_representation.draw("test",nnn_representation.moves(nnn_representation.init_cube(n),nnn_representation.apply_alg(imoves),n),n,config);
