@@ -1,6 +1,6 @@
 {
   "name": "deltascrambler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scramble and scramble image generator for all WCA and lots of non-WCA puzzles",
   "main": "built/index.js",
   "directories": {
