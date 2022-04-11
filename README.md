@@ -9,5 +9,5 @@ Include worker.js in the build script if you want to use this as a web worker. W
 
 All code is written and copyrighted by me (Frederik Hutfleß), with exception of the contents of the following files, where I at most have done very small changes to what the authors originally wrote:
 - scramble_wca.js (taken from https://github.com/thewca/tnoodle and released under GPLv3)
-- scramble_subset.js (taken from https://github.com/cubing/jsss and released under GPLv3)
+- scramble_subset.js (taken from https://github.com/cubing/jsss/tree/scrambles and released under GPLv3)
 - small parts of other.js (taken from https://github.com/cs0x7f/cstimer and released under GPLv3)

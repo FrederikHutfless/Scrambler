@@ -1,0 +1,32 @@
+{
+  "name": "deltascrambler",
+  "version": "0.1.0",
+  "description": "Scramble and scramble image generator for all WCA and lots of non-WCA puzzles",
+  "main": "built/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://FrederikHutfless@github.com/FrederikHutfless/Scrambler.git"
+  },
+  "keywords": [
+    "rubiks",
+    "cube",
+    "scrambler",
+    "twisty",
+    "puzzle"
+  ],
+  "author": "Frederik Hutfleß",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/FrederikHutfless/Scrambler/issues"
+  },
+  "homepage": "https://github.com/FrederikHutfless/Scrambler#readme",
+  "dependencies": {
+    "np": "^7.6.1"
+  }
+}
