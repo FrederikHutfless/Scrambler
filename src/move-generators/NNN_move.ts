@@ -11,7 +11,7 @@ export function NNN_move(config) {
     var n:number = config.n;
     var lgth:number = config.lgth;
     if(n < 2) return "";
-    if(!lgth) lgth = Math.ceil(2*n*n - 5*n + 13);
+    if(!lgth) lgth = Math.ceil(2*n*n - 4*n + 13);
     return scrambleNNN(n, lgth);
 }
 

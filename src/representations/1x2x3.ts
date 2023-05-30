@@ -1,11 +1,10 @@
 var c123 = (function() {
 
-	function init_cube(n) {
+	function init_cube() {
 		return [false, false, 0,1,2,3]; //LFlip, RFlip, UL UR DR DL
 	}
 
-	function draw(cid, grstate, n, config) {
-		var c = document.getElementById(cid);
+	function draw(c: HTMLCanvasElement, grstate, config) {
 		var ctx = c.getContext("2d");
 		var width = c.width;
 		var height = c.height;
@@ -44,7 +43,7 @@ var c123 = (function() {
 		}
 	}
 
-	function move(state, side, depth) {
+	function move(state, side) {
 		if(side == 0){
 			state[1] = !state[1];
 			var x = state[4];
@@ -64,15 +63,15 @@ var c123 = (function() {
 
 	function moves(grstate, mvs) {
 		for (var i = 0; i < mvs.length; ++i)
-			grstate = move(grstate, mvs[i][0], mvs[i][1]);
+			grstate = move(grstate, mvs[i][0]);
 		return grstate;
 	}
 
 	function apply_alg(moves){
 		var mvs = [];
 		for(var i=0;i<moves.length;++i){
-			face = {"R":0,"U":1,"D":2}[moves[i][0]];
-			mvs.push([face,2]);
+			var face = {"R":0,"U":1,"D":2}[moves[i][0]];
+			mvs.push([face]);
 		}
 		return mvs;
 	}
@@ -85,3 +84,5 @@ var c123 = (function() {
 		apply_alg
 	}
 })();
+
+export default c123;

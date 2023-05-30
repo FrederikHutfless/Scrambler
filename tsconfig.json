@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
-    "rootDir": "./src/",
-    "outDir": "./build/",
+    "rootDir": "src",
+    "outDir": "build",
     "module": "commonjs",
-    "target": "es5"
-  }
+    "target": "es5",
+    "allowJs": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
 }

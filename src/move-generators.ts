@@ -1,10 +1,17 @@
 import {NNN_move} from "./move-generators/NNN_move";
+import {subset_moves} from "./move-generators/subset_moves";
 
 function eventToGenerator(event:string){
     if(event.split("x").length == 3 && event.split("x")[0] == event.split("x")[1] && event.split("x")[1] == event.split("x")[2])
         return "NNN_move";
+    if("333_RU".split("|").indexOf(event) != -1)
+        return "subset_moves";
 }
 
+/*
+This function can be given either just an even or a event and a config.
+The event can be either a event string or a ":" followed by a generator name.
+*/
 export function generateMoves(args){
     var generator;
     var config;
@@ -25,6 +32,6 @@ export function generateMoves(args){
         config = args[1];
     }
     
-    generator = {"NNN_move": NNN_move}[generator] || function(){return "Invalid generator"};
+    generator = {"NNN_move": NNN_move, "subset_moves": subset_moves}[generator] || function(){return "Invalid generator"};
     return generator(config);
 }
